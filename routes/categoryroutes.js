@@ -5,34 +5,28 @@ const {
   createCategory,
   updateCategory,
   deleteCategory,
+} = require("../Services/categoriesServices");
 
-} = require('../Services/categoriesServices');
-
-const authService = require('../Services/authServices');
+const authService = require("../Services/authServices");
 
 const router = express.Router();
 
-
 router
-  .route('/')
+  .route("/")
   .get(getCategories)
   .post(
     authService.protect,
-    authService.allowedto('student', 'admin'),
+    authService.allowedto( "admin"),
     createCategory
   );
 router
-  .route('/:id')
+  .route("/:id")
   .get(getCategory)
   .put(
     authService.protect,
-    authService.allowedto('student', 'admin'),
+    authService.allowedto( "admin"),
     updateCategory
   )
-  .delete(
-    authService.protect,
-    authService.allowedto('admin'),
-    deleteCategory
-  );
+  .delete(authService.protect, authService.allowedto("admin"), deleteCategory);
 
 module.exports = router;

@@ -6,7 +6,6 @@ const userroute=require('./userroutes.js')
 const notificationroute=require('./notificationroutes.js')
 
 
-
 const mountRoutes=(server)=>{
     //amount routes
     

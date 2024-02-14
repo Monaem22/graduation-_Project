@@ -11,7 +11,7 @@ exports.addprojectTofavouritelist = async (req, res, next) => {
 
   res.status(200).json({
       status: "success",
-      message: "product added successfully to your favourite",
+      message: "project added successfully to your favourite",
       data: user.wishlist,
     });
 };
@@ -30,7 +30,7 @@ exports.removeProjectFromfavouritelist = async (req, res, next) => {
       .status(200)
       .json({
         status: "success",
-        message: "product removed successfully from your wishlist",
+        message: "project removed successfully from your wishlist",
         data: user.wishlist,
       });
   };

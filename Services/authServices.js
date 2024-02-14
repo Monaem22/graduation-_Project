@@ -8,13 +8,17 @@ const sendEmail = require("../util/sendEmail");
 const asyncHandler = require("express-async-handler");
 exports.signup = async (req, res, next) => {
   const user = await usermodel.create(req.body);
-  const token = jwt.sign({ 
-      userId: user._id }, process.env.JWT_SECRECT_KEY, {expiresIn: "90d",
-  });
+  const token = jwt.sign(
+    {
+      userId: user._id,
+    },
+    process.env.JWT_SECRECT_KEY,
+    { expiresIn: "90d" }
+  );
   notification.create({
-    student:user._id,
-    content:"the new user has been register"
-  })
+    student: user._id,
+    content: "the new user has been register",
+  });
   res.status(201).json({ data: user, token });
 };
 
@@ -25,7 +29,9 @@ exports.login = async (req, res, next) => {
     return res.status(403).send("Invalid email or password");
   } else {
     if (user.isblocked) {
-      return res.status(403).send("Your account is blocked. You cannot log in.");
+      return res
+        .status(403)
+        .send("Your account is blocked. You cannot log in.");
     }
     let isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
@@ -41,7 +47,7 @@ exports.login = async (req, res, next) => {
       delete user._doc.password;
       res.status(200).send({ data: user, token });
     }
-  } 
+  }
 };
 
 //make sure the user is logged in
@@ -56,7 +62,10 @@ exports.protect = asyncHandler(async (req, res, next) => {
   }
   if (!token) {
     return next(
-      new ApiError("You are not login, Please login to get access this route",401)
+      new ApiError(
+        "You are not login, Please login to get access this route",
+        401
+      )
     );
   }
 
@@ -67,7 +76,10 @@ exports.protect = asyncHandler(async (req, res, next) => {
   const currentUser = await usermodel.findById(decoded.userId);
   if (!currentUser) {
     return next(
-      new ApiError("The user that belong to this token does no longer exist",401)
+      new ApiError(
+        "The user that belong to this token does no longer exist",
+        401
+      )
     );
   }
 
@@ -80,7 +92,11 @@ exports.protect = asyncHandler(async (req, res, next) => {
     // Password changed after token created (Error)
     if (passChangedTimestamp > decoded.iat) {
       return next(
-        new ApiError("User recently changed his password. please login again..",401));
+        new ApiError(
+          "User recently changed his password. please login again..",
+          401
+        )
+      );
     }
   }
 
@@ -89,7 +105,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
   next();
 });
 
-exports.allowedto = (...roles) =>
+exports.allowedto =
+  (...roles) =>
   async (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(new ApiError("you are not allowed", 403));
@@ -149,7 +166,7 @@ exports.verifyPassResetCode = async (req, res, next) => {
   user.passwordResetVerified = true;
   await user.save();
 
-  res.status(200).json({status: "Success",});
+  res.status(200).json({ status: "Success" });
 };
 
 exports.resetPassword = async (req, res, next) => {

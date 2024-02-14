@@ -12,8 +12,8 @@ exports.deleteOne = (Model) =>
     }
 
     // Trigger "remove" event when update document
-    document.remove();
-    res.status(204).send();
+    // document.remove();
+    res.status(204).json({message:"deleted"});
   });
 
 exports.updateOne = (Model) =>
@@ -74,6 +74,7 @@ exports.getAll = (Model, modelName = "") =>
     // Execute query
     const { mongooseQuery, paginationResult } = apiFeatures;
     const documents = await mongooseQuery;
-    res.status(200)
+    res
+      .status(200)
       .json({ results: documents.length, paginationResult, data: documents });
   });

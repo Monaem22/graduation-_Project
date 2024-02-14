@@ -128,6 +128,115 @@ exports.rejectproject = async (req, res) => {
   }
 };
 
+exports.like= async (req, res) => {
+  try {
+    const projectId = req.body.projectId;
+    const userId = req.body.id;
+    const projectObj = await Project_warehouse.findById(projectId);
+    if (!projectObj) {
+      return res.status(404).json({ error: "project not found" });
+    }
+    const alreadyLiked = projectObj.likes.some((like) => like.user === userId);
+    if (alreadyLiked) {
+      return res.status(400).json({
+        error: "You have already liked this project",
+      });
+    }
+    projectObj.likes.push({ user: userId });
+    projectObj.numberOfLikes++;
+
+    await projectObj.save();
+    res
+      .status(200)
+      .json({ message: "project is liked successfully", projectObj });
+  } catch (error) {
+    console.error("Error liking project:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+/////////////////////////////////////
+ exports.comment=async (req, res) => {
+  try {
+    const projectId = req.body.projectId;
+    const userId = req.body.id;
+    const {content}  = req.body;
+    console.log(userId);
+
+    const projectObj = await Project_warehouse.findById(projectId);
+    if (!projectObj) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+    projectObj.comments.push({ user: userId, content });
+    await projectObj.save();
+
+    res.status(200).json({ message: "Comment added successfully", projectObj });
+  } catch (error) {
+    console.error("Error adding comment to project:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+////////////////////////////////////////
+exports.showlikes= async (req, res) => {
+  try {
+    const projectId = req.params._id;
+    const projectObj = await Project_warehouse.findById(projectId);
+
+    if (!projectObj) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+
+    res
+      .status(200)
+      .json({ likes:  projectObj.likes });
+    
+  } catch (error) {
+    console.error("Error show all likes:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+ exports.showcomment=async (req, res) => {
+  try {
+    const projectId = req.params._id;
+    const projectObj = await Project_warehouse.findById(projectId);
+
+    if (!projectObj) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+
+    res
+      .status(200)
+      .json({ likes:  projectObj.comments });
+    
+  } catch (error) {
+    console.error("Error show all likes:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+exports.deletecomment=async (req, res) => {
+  try {
+    const projectId = req.body.projectId;
+    const userId = req.body.id;
+    console.log(userId);
+
+    const projectObj = await Project_warehouse.findById(projectId);
+    if (!projectObj) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+    projectObj.comments.pull({ user: userId });
+    await projectObj.save();
+
+    res.status(200).json({ message: "Comment deleted successfully", projectObj });
+  } catch (error) {
+    console.error("Error adding comment to project:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+
 //add review function here
 // exports.review=(req,res)=>{
 //   let data=req.body;
