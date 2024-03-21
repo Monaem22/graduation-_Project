@@ -1,33 +1,30 @@
 const express = require("express");
-const path = require("path");
+const app = express();
 const dotenv = require("dotenv");
-const ApiErrors = require("./util/ApiErrors");
-// const bodyParser = require ("body-parser");
-const db = require("./config/DataBase.js");
+const Routes = require("./routes");
+const dbConnection = require("./config/DB_connection");
 const cors = require("cors");
-const mountRoutes = require("./routes");
-const port = 5555;
-const { log } = require("console");
-dotenv.config({ path: "config.env" });
-db();
-const server = express();
+const cookieParser = require('cookie-parser')
 
-//enable ather domain to access your abblication
-server.use(cors());
-server.options("*", cors());
-//middleware
-server.use(express.json());
-server.use(express.static(path.join(__dirname, "uploads")));
-server.use(express.urlencoded({ extends: true }));
-//amountroute
-mountRoutes(server);
+dotenv.config() ;
+dbConnection() ;
 
+// global middleware
+app.use(cors());
+app.options("*", cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-server.all("*", (req, res, next) => {
-  next(new ApiErrors(`cant find your route:${req.originalUrl}`, 400));
-});
+app.use("/app/user",express.static("./Uploads-transcript"));
+app.use("/app/user",express.static("./Uploads-image"));
 
-//serverlisting
-server.listen(port, () => {
-  log(`the server is running in port ${port}`);
+app.use("/app",Routes); 
+
+app.all("*", (req, res, next) => {
+  next(new Error(`\ncant find your route:${req.originalUrl}\n`));
+}); 
+
+app.listen(process.env.port, () => { 
+  console.log(`the server is running on port : ${process.env.port} on  http://localhost:${process.env.port}`);
 });

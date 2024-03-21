@@ -1,0 +1,995 @@
+{
+	"info": {
+		"_postman_id": "d7331307-f3f8-4956-81f3-038dabfa2562",
+		"name": "GP APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26812826"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "admin_login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "monaem@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12333333",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "65fb066f64fbbb244a81f927",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/blockUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"blockUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unblock-User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "65fb066f64fbbb244a81f927",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/unblockUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"unblockUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-specific-User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "65fb066f64fbbb244a81f927",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/getUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"getUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-All-User-with-roll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "role",
+									"value": "student",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/getAllUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"getAllUser"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "student",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1111223311",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "moneamosama",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "65f9b7b48a2dee69eb3af146",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/deleteUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"deleteUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "s@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "userName",
+									"value": "jjk",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "jkjjjjjjjjjjj",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "AAh5hpohh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "11110000",
+									"type": "text"
+								},
+								{
+									"key": "userName",
+									"value": "moneamosama",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "AAh5hpohh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "11110000",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_my_Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userName",
+									"value": "sssss",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "AAh5hpohh@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "ssssssssssss",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/updateProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "aaaaaaaaa",
+									"type": "text"
+								},
+								{
+									"key": "oldPassword",
+									"value": "11110000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/updatePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload_Transcript",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "application",
+									"type": "file",
+									"src": "postman-cloud:///1eee58e9-f480-4cc0-9be0-dffe55f8b836"
+								},
+								{
+									"key": "application",
+									"type": "file",
+									"src": "postman-cloud:///1eee5f60-7624-43e0-8e50-b61fbba14055",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/uploadTranscript",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"uploadTranscript"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTranscript",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentID",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1111223311",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "moneamosama",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "studentID",
+									"value": "65f9b7b48a2dee69eb3af146",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/deleteTranscript",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"deleteTranscript"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload_image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1eee599a-d125-41c0-8404-125ad9b95186"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/uploadimage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"uploadimage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-Image",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1eee599a-d125-41c0-8404-125ad9b95186"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/user/updateImage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"updateImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show-My-Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/app/user/showMyProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"user",
+								"showMyProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/app/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget password Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "AAh5hpohh@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/forgetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"forgetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-Rest-Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "resetCode",
+									"value": "156161",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/verifyRestCode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"verifyRestCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "AAh5hpohh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5555/app/auth/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"app",
+								"auth",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "like",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "projectId",
+							"value": "65c50d79dedb3c2276105546",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "65c5261cf3f5a9fbe325fdc3",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "jnrtf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "fasvc",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "cwq",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_id",
+							"value": "65c99489d4ca3cd5add49e9f",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/app/like",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"app",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "content",
+							"value": "ddddafvvvvvvvvvvvvvvvvvvv",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "65c8706e467e78df4ea4957f"
+						},
+						{
+							"key": "projectId",
+							"value": "65c50d79dedb3c2276105546",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sacas@dawf",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/projectwarehouse/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"projectwarehouse",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "projectId",
+							"value": "65c50d79dedb3c2276105546",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "65c8706e467e78df4ea4957f",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "projectwarehouse",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWM4NzA2ZTQ2N2U3OGRmNGVhNDk1N2YiLCJpYXQiOjE3MDc2NDg5NzAsImV4cCI6MTcxNTQyNDk3MH0.LdsjXZOoji-7D-ehU5s3J_eT1mlm7Ze0ML9LRT0yYXs",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/projectwarehouse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"projectwarehouse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showLikes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "projectId",
+							"value": "65c50d79dedb3c2276105546",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/projectwarehouse/showComments?_id=65c50d79dedb3c2276105546",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"projectwarehouse",
+						"showComments"
+					],
+					"query": [
+						{
+							"key": "_id",
+							"value": "65c50d79dedb3c2276105546"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
